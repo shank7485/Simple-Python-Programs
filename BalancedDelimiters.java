@@ -29,6 +29,8 @@ public class BalancedDelimiters {
 			}
 
 		}
+		
+		// Credits StackOverFlow :P. Bored to code this part.
 		for (int i = 0; i < n / 2; i++) {
 			if (number.charAt(i) != number.charAt(n - i - 1)) {
 				return false;
