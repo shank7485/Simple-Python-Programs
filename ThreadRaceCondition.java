@@ -13,6 +13,7 @@ public class ThreadRaceCondition implements Runnable {
 		func2(this.data, this.count);
 	}
 
+	//Race Condition: Writes it's own increamented value onto variable. 
 	void func1(int data, int count) {
 
 		for (int i = 0; i < count; i++) {
@@ -22,7 +23,7 @@ public class ThreadRaceCondition implements Runnable {
 		System.out.println(this.data);
 
 	}
-
+	//Race Condition avoided by executing one thread at a time. 
 	synchronized void func2(int data, int count) {
 
 		for (int i = 0; i < count; i++) {
