@@ -83,3 +83,18 @@ def logger(f):
     		print("[INFO] Logging.")
     		return f(lst)
 	return log_printer
+
+################################################################################################
+# The same thing above can be done as a Class decorator.
+class decorator(object):
+  def __init__(self, f):
+    self.f = f
+  
+  def __call__(self):
+    self.f()
+
+@decorator
+def printer():
+  print("HelloWorld!!")
+
+printer()
