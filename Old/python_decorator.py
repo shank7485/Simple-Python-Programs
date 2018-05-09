@@ -60,3 +60,26 @@ def sum_values(values):
   return sum(values)
   
 print(sum_values([1, 2, 3, 4]))
+
+######################################################################################
+# Apparently, when we do decorators as above, the wrapped functions will lose other
+# information such as __name__, __module__, __doc__. So, to retain it, we'll have to do
+# something like the following:
+
+def logger(f):
+  def log_printer(lst):
+    print("[INFO] Logging.")
+    return f(lst)
+  log_printer.__name__ = f.__name__
+  log_printer.__doc__ = f.__doc__
+  log_printer.__module__ = f.__module__
+  return log_printer
+
+# Instead of all the mess above, we can use functools wraps as a decorator:
+from functools import wraps
+def logger(f):
+	@wraps(f)
+	def log_printer(lst):
+    		print("[INFO] Logging.")
+    		return f(lst)
+	return log_printer
