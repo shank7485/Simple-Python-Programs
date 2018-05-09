@@ -44,5 +44,19 @@ def some_long_service():
 	print("\nSum of all the numbers: " + str((sum(num_list))))
 
 
-
 some_long_service()
+
+######################################################################################
+
+def logger(f):
+  def log_printer(lst):
+    print("[INFO] Logging.")
+    return f(lst)
+  
+  return log_printer
+  
+@logger
+def sum_values(values):
+  return sum(values)
+  
+print(sum_values([1, 2, 3, 4]))
